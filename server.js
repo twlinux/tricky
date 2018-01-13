@@ -82,7 +82,7 @@ app.all('/user/logout*', function (req, res) {
 });
 
 app.use('/public', express.static('public'));
-app.use('/lib', express.static('lib'));
+app.use('/vendor', express.static('vendor'));
 
 app.use(function (req, res) {
     res.status(404).end();
@@ -114,3 +114,12 @@ function output(req, info, statusCode) {
     console.log(colors.dim(`[  ${date.getHours()}:${date.getMinutes()} ${date.getSeconds()} ]`)
         + ` ${req.ip} ${colors.italic(req.originalUrl)}: ${request} ${colors.magenta(statusCode)}`);
 }
+
+process.on('SIGINT', function () {
+    console.log(`${'SIGINT'.underline.red} recieved, process exiting.`);
+    process.exit();
+});
+process.on('SIGTERM', function () {
+    console.log(`${'SIGTERM'.underline.red} recieved, process exiting.`);
+    process.exit();
+});
