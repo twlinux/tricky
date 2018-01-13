@@ -6,6 +6,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "colors": "^1.1.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "ip": "^1.1.5",
     "materialize-css": "^0.100.2"
@@ -15,7 +16,7 @@
   },
   "scripts": {
     "test": "node server.js",
-    "start": "rm README.md; node server.js"
+    "start": "rm README.md;PORT=80 node server.js"
   },
   "repository": {
     "type": "git",

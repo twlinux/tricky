@@ -1,41 +1,57 @@
-// to run this server, use the command `node server.js`
+// to run this server, use the command `npm run start`
+
+const cookieKey = 'login';
+const correct = {
+    user: 'hilarious',
+    pass: 'ch33secake'
+};
+const loginPage = '/public/login.html';
+
 const ip = require('ip');
 const colors = require('colors');
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const app = express();
+app.use(cookieParser());
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 
 app.get('/', function (req, res) {
-    const redir = '/public/login.html';
-    res.redirect(redir);
-    output(req, colors.dim(`redirect to ${redir}`), res.statusCode);
+    let target = req.cookies.login ? 'user/page/already.html' : loginPage;
+    res.redirect(target);
+    output(req, colors.dim(`redirect to ${target}`), res.statusCode);
 });
 
-// create application/x-www-form-urlencoded parser
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
-// POST /login gets urlencoded bodies
-app.post('/login', urlencodedParser, function (req, res) {
+//check POST message, gives cookie then serves content
+app.post('/user/page/:file', urlencodedParser, function (req, res) {
     if (!req.body) return res.sendStatus(400);
-
-    const correct = {
-        user: 'hilarious',
-        pass: 'ch33secake'
-    }
-
     if (req.body.username === correct.user && req.body.pass === correct.pass) {
-        //TODO give them a login cookie
-        res.redirect('user/page/index.html');
+        res.cookie(cookieKey, true);
+        res.sendFile(req.params.file, {root: `${__dirname}/user/page/`});
+        output(req, colors.cyan('gave cookie'), res.statusCode);
     }
-    else {
+    else
         res.redirect('public/loginfailed.html');
-    }
 });
 
+//check cookie then serves content
 app.get('/user/page/:file', function (req, res) {
+
+    if (!req.cookies.login) {
+        res.status(403).end();
+        return;
+    }
+    
     res.sendFile(req.params.file, {root: `${__dirname}/user/page/`});
     if (req.params.file.endsWith('.html'))
         output(req, colors.cyan('allowed'), res.statusCode);
+});
+
+app.all('/user/logout*', function (req, res) {
+    res.clearCookie(cookieKey);
+    res.redirect(loginPage);
 });
 
 app.use('/public', express.static('public'));
@@ -67,7 +83,7 @@ function output(req, info, statusCode) {
     default:
         request = colors.red(req.method);
     }
-    const date = new Date();
+    let date = new Date();
     console.log(colors.dim(`[  ${date.getHours()}:${date.getMinutes()} ${date.getSeconds()} ]`)
         + ` ${req.ip} ${colors.italic(req.originalUrl)}: ${request} ${colors.magenta(statusCode)}`);
 }

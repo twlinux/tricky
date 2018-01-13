@@ -3,13 +3,21 @@ body {
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.1em;
 }
-form[action="/login"] {
+
+form[action*="user"] {
     width: 420px;
 }
-form[action="/login"] input[type="text"],
-form[action="/login"] input[type="password"] {
+form[action*="user"] input[type="text"],
+form[action*="user"] input[type="password"] {
     width: 100%;
 }
-form[action="/login"] input[type="submit"] {
+form[action*="user"] input[type="submit"] {
     float: right;
+}
+
+.red-button {
+    background-color: #ee6e73;
+}
+.red-button:hover {
+    background-color: #ef9a9a;
 }
