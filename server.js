@@ -1,3 +1,4 @@
+// to run this server, use the command `node server.js`
 const ip = require('ip');
 const colors = require('colors');
 
@@ -27,7 +28,7 @@ app.use(function (req, res) {
     output(req, colors.dim('not found'), res.statusCode);
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 80;
 app.listen(port);
 let url = (`http://${colors.bold(ip.address())}:${colors.cyan(port.toString())}/`);
 console.log(`Server running at ${colors.underline(url)}`);

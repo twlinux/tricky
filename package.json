@@ -1,0 +1,30 @@
+{
+  "name": "tricky",
+  "version": "1.0.0",
+  "description": "Fake login page with many vulnerabilities.",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "colors": "^1.1.2",
+    "express": "^4.16.2",
+    "ip": "^1.1.5",
+    "materialize-css": "^0.100.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.15.0"
+  },
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/twlinux/tricky.git"
+  },
+  "author": "Jennings Zhang",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/twlinux/tricky/issues"
+  },
+  "homepage": "https://github.com/twlinux/tricky#readme"
+}
