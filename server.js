@@ -22,13 +22,14 @@ app.post('/login', urlencodedParser, function (req, res) {
 });
 
 app.use('/public', express.static('public'));
+app.use('/lib', express.static('lib'));
 
 app.use(function (req, res) {
     res.status(404).end();
     output(req, colors.dim('not found'), res.statusCode);
 });
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 app.listen(port);
 let url = (`http://${colors.bold(ip.address())}:${colors.cyan(port.toString())}/`);
 console.log(`Server running at ${colors.underline(url)}`);
