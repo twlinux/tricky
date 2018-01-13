@@ -4,17 +4,6 @@ body {
     font-size: 1.1em;
 }
 
-form[action*="user"] {
-    width: 420px;
-}
-form[action*="user"] input[type="text"],
-form[action*="user"] input[type="password"] {
-    width: 100%;
-}
-form[action*="user"] input[type="submit"] {
-    float: right;
-}
-
 .red-button {
     background-color: #ee6e73;
 }

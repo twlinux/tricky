@@ -1,21 +1,38 @@
 <!doctype html>
 <html>
-    <head>
-        <title>TRICKY - Login</title>
-        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
-        <link rel="stylesheet" type="text/css" href="/lib/materialize.css"/>
-        <link rel="stylesheet" type="text/css" href="style.css" />
-    </head>
 
-    <body>
-        <header>
-            <h1>TRICKY Login</h1>
-        </header>
+<head>
+    <title>TRICKY - Login</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/lib/materialize.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <style type="text/css">
+        form[action*="user"] {
+            width: 420px;
+        }
+        form[action*="user"] input[type="text"],
+        form[action*="user"] input[type="password"] {
+            width: 100%;
+        }
+        form[action*="user"] input[type="submit"] {
+            float: right;
+        }
+    </style>
+</head>
 
-        <form action="/user/page/index.html" method="post">
-            username: <input type="text" name="username" autocomplete="on" placeholder="username" required autofocus><br />
-            password: <input type="password" name="pass" autocomplete="on" placeholder="password" required><br />
-            <input type="submit" class="waves-effect waves-light btn">
-        </form>
-    </body>
+<body>
+    <header>
+        <h1>TRICKY Login</h1>
+    </header>
+
+    <form action="/user/page/index.html" method="post">
+        username:
+        <input type="text" name="username" autocomplete="on" placeholder="username" required autofocus>
+        <br /> password:
+        <input type="password" name="pass" autocomplete="on" placeholder="password" required>
+        <br />
+        <input type="submit" class="waves-effect waves-light btn">
+    </form>
+</body>
+
 </html>

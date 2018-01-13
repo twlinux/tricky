@@ -6,18 +6,27 @@
     <link rel="shortcut icon" type="image/x-icon" href="/public/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/lib/materialize.css" />
     <link rel="stylesheet" type="text/css" href="/public/style.css" />
+    <style type="text/css">
+    #app .collection {
+        max-width: 800px;
+    }
+    </style>
 </head>
 
 <body>
     <header>
-        <h1>TRICKY Home Page</h1>
+        <h1>TRICKY Cloud Drive =O</h1>
     </header>
     <p>
         <em>You are now logged in. Welcome,
             <span id="name-placeholder"></span>.
         </em>
+
     </p>
     <div id="app"></div>
+
+    <a class="waves-effect btn red-button" href="/user/logout" id="logout">Logout</a>
+
     <script type="text/javascript" src="user.js"></script>
     <noscript>
         <strong style="color: red">JavaScript is required to load this page.</strong>
