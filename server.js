@@ -1,5 +1,8 @@
-// to run this server, use the command `npm run start`
-
+/*
+ * to run this server, use the command `npm run start`
+ * IMPLEMENTATION IS INSECURE, just like me.
+ * **Do not** reference this file as an example of proper user authentication.
+ */
 const cookieKey = 'login';
 const correct = {
     user: 'hilarious',
@@ -48,7 +51,7 @@ app.get('/user/:folder/:file', function (req, res) {
     }
     else {
         res.sendFile(req.params.file, { root: `${__dirname}/user/${req.params.folder}/` });
-        if (req.params.folder === `data`)
+        if (req.params.folder === 'data')
             message = colors.cyan('data');
         else if (req.params.file.endsWith('.html'))
             message = colors.cyan('allowed');
@@ -96,16 +99,16 @@ function output(req, info, statusCode) {
 
     let request;
     switch (req.method) {
-        case 'GET':
-            request = `${colors.green(req.method)} ${info}`;
-            break;
-        case 'POST':
-            request = `${colors.blue(req.method)} ${colors.bold(info.magenta)}`;
-            break;
-        case false:
-            request = 'invalid';
-        default:
-            request = colors.red(req.method);
+    case 'GET':
+        request = `${colors.green(req.method)} ${info}`;
+        break;
+    case 'POST':
+        request = `${colors.blue(req.method)} ${colors.bold(info.magenta)}`;
+        break;
+    case false:
+        request = 'invalid';
+    default:
+        request = colors.red(req.method);
     }
     let date = new Date();
     console.log(colors.dim(`[  ${date.getHours()}:${date.getMinutes()} ${date.getSeconds()} ]`)

@@ -1,1 +1,3 @@
-Ajit Pai
+Please note that server.js is full of vulnerabilities.
+
+Authentication with cookies implementation is literally the worst.

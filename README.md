@@ -6,7 +6,7 @@
 
 Week 15 practice lab #2
 
-Fake login page with many vulnerabilities.
+Fake single-user login page on express.js with many vulnerabilities.
 
 ## Setup
 
@@ -15,6 +15,12 @@ Install software (on Ubuntu).
 
 ```bash
 sudo apt install npm openssh-server telnetd
+```
+
+Clone this repository (on MCPS network).
+
+```bash
+git -c http.sslVerify=false clone https://github.com/twlinux/tricky.git ~/cloud_server
 ```
 
 Install dependencies (on MCPS network).
@@ -26,7 +32,7 @@ npm --strict-ssl false install
 Create the admin user.
 
 ```bash
-useradd -m -c "Hillary Clinton" -s /bin/bash -U hilarious
+useradd -m -c "Hilarious Clinton" -s /bin/bash -U hilarious
 passwd hilarious
 usermod -aG sudo hilarious
 ```
@@ -37,7 +43,3 @@ Change SSH port number to 80 (Ubuntu 17.10).
 rvim /etc/ssh/sshd_config
 systemctl restart ssh
 ```
-
-# TODO
-
-PGP message

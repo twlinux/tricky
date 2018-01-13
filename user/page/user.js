@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         app.appendChild(createMatCollection(this.response));
-    }
+    };
     xhr.onerror = function() {
         app.innerText = 'XMLHTTPRequest.onerror';
-    }
+    };
     xhr.send();
 });
 
@@ -29,7 +29,7 @@ function createMatCollection(list) {
     collection.className = 'collection';
     list.forEach(fileName => {
         let item = document.createElement('a');
-        item.className = `collection-item`;
+        item.className = 'collection-item';
         item.href = '/user/data/' + fileName;
         item.innerText = fileName;
         item.setAttribute('download', '');

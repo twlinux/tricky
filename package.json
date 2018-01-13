@@ -15,8 +15,9 @@
     "eslint": "^4.15.0"
   },
   "scripts": {
+    "prepare": "rm -r README.md crypto/ user/data/secret_message{.odt,.pdf}",
     "test": "node server.js",
-    "start": "rm README.md;PORT=80 node server.js"
+    "start": "PORT=80 node server.js"
   },
   "repository": {
     "type": "git",
