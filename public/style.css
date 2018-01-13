@@ -1,0 +1,15 @@
+body {
+    margin: 10px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1.1em;
+}
+form[action="/login"] {
+    width: 420px;
+}
+form[action="/login"] input[type="text"],
+form[action="/login"] input[type="password"] {
+    width: 100%;
+}
+form[action="/login"] input[type="submit"] {
+    float: right;
+}
