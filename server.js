@@ -17,8 +17,25 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 // POST /login gets urlencoded bodies
 app.post('/login', urlencodedParser, function (req, res) {
     if (!req.body) return res.sendStatus(400);
-    res.send('welcome, ' + req.body.username);
-    //TODO
+
+    const correct = {
+        user: 'hilarious',
+        pass: 'ch33secake'
+    }
+
+    if (req.body.username === correct.user && req.body.pass === correct.pass) {
+        //TODO give them a login cookie
+        res.redirect('user/page/index.html');
+    }
+    else {
+        res.redirect('public/loginfailed.html');
+    }
+});
+
+app.get('/user/page/:file', function (req, res) {
+    res.sendFile(req.params.file, {root: `${__dirname}/user/page/`});
+    if (req.params.file.endsWith('.html'))
+        output(req, colors.cyan('allowed'), res.statusCode);
 });
 
 app.use('/public', express.static('public'));
@@ -52,5 +69,5 @@ function output(req, info, statusCode) {
     }
     const date = new Date();
     console.log(colors.dim(`[  ${date.getHours()}:${date.getMinutes()} ${date.getSeconds()} ]`)
-        + ` ${req.ip}: ${request} ${colors.italic(req.originalUrl)} ${colors.magenta(statusCode)}`);
+        + ` ${req.ip} ${colors.italic(req.originalUrl)}: ${request} ${colors.magenta(statusCode)}`);
 }
